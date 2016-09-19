@@ -14,7 +14,7 @@ angular.module('tinacious.fluidVid', [])
         }
 
         if (!videoType) {
-          $log.error('Specify type, either \'youtube\' or \'vimeo\'');
+          $log.error('Specify type, either \'youtube\', \'vimeo\' or \'facebook\'');
         }
 
         // video code based on video type
@@ -27,7 +27,11 @@ angular.module('tinacious.fluidVid', [])
             case 'vimeo':
               videoCode = '<iframe src="http://player.vimeo.com/video/' + videoId + '" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
               break;
-            
+
+            case 'facebook':
+              videoCode = '<iframe src="https://www.facebook.com/plugins/video.php?href=' + videoId + '" width="400" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>';
+              break;
+
             default:
               $log.error('Sorry, the type "' + videoType + '" is not currently supported. Please use either \'youtube\' or \'vimeo\'');
           }
